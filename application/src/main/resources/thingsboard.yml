@@ -122,7 +122,7 @@ database:
   entities:
     type: "${DATABASE_ENTITIES_TYPE:sql}" # cassandra OR sql
   ts:
-    type: "${DATABASE_TS_TYPE:sql}" # cassandra, sql, or timescale (for hybrid mode, DATABASE_TS_TYPE value should be cassandra, or timescale)
+    type: "${DATABASE_TS_TYPE:cassandra}" # cassandra, sql, or timescale (for hybrid mode, DATABASE_TS_TYPE value should be cassandra, or timescale)
 
 # note: timescale works only with postgreSQL database for DATABASE_ENTITIES_TYPE.
 
@@ -376,6 +376,7 @@ spring:
       repositories:
         enabled: "true"
   jpa:
+    show-sql: "${SPRING_JPA_SHOW_SQL:false}"
     open-in-view: "false"
     hibernate:
       ddl-auto: "none"
@@ -383,8 +384,8 @@ spring:
   datasource:
     driverClassName: "${SPRING_DRIVER_CLASS_NAME:org.postgresql.Driver}"
     url: "${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/thingsboard}"
-    username: "${SPRING_DATASOURCE_USERNAME:postgres}"
-    password: "${SPRING_DATASOURCE_PASSWORD:postgres}"
+    username: "${SPRING_DATASOURCE_USERNAME:tb_sys}"
+    password: "${SPRING_DATASOURCE_PASSWORD:1qaz@WSX}"
     hikari:
       maximumPoolSize: "${SPRING_DATASOURCE_MAXIMUM_POOL_SIZE:50}"
 

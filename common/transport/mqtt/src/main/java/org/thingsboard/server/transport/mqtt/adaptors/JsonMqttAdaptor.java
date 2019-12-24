@@ -219,6 +219,9 @@ public class JsonMqttAdaptor implements MqttTransportAdaptor {
                 throw new AdaptorException(new IllegalArgumentException("Payload is empty!"));
             }
         }
+        if (!payload.startsWith("{") && !payload.endsWith("}")) {
+            payload = String.format("{\"asciiStr\":\"%s\"}", payload);
+        }
         return payload;
     }
 
